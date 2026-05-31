@@ -24,10 +24,21 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+        //going to add in camera tracking for player so that the movement is relative to the camera's forward direction instead of world space, so that the player can move in any direction based on where the camera is facing
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
 
-        Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
+        // Flatten to XZ plane (no vertical component)
+        cameraForward.y = 0;
+        cameraRight.y = 0;
 
-        rb.AddForce(movement * speed);
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Build movement relative to camera
+        Vector3 movement = (cameraForward * vertical + cameraRight * horizontal).normalized;
+            rb.AddForce(movement * speed);
+        
     }
     
     void Jump()
