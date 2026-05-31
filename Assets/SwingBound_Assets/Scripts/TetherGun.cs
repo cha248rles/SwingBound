@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// left click + hold to grapple onto any trees (both small and big)
+// left click + hold to grapple onto any trees (both small and big trees in platform)
 public class TetherGun : MonoBehaviour
 {
     [Header("References")]
