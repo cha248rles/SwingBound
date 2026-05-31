@@ -1,22 +1,34 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
     public float jumpForce = 5;
-
+    public bool isDead;
     bool isGrounded;
+    
     Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
             Cursor.lockState = CursorLockMode.Locked;
+        isDead = false;
 
     }
 
     void Update()
     {
+    //Locks controls on death
+    //Early death behavior will edit later to be more detailed 
+    if (transform.position.y < 5)
+        {
+            isDead = true;
+        }
+    if (isDead)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
         // Lock mouse on click
     if (Input.GetMouseButtonDown(0))
     {
@@ -28,10 +40,15 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
     }
+    if(!isDead){
         Jump();
+    }
     }    void FixedUpdate()
     {
-        Move();
+        if(!isDead)
+        {
+            Move();
+        }
     }
     void Move()
     {
