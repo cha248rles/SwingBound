@@ -98,7 +98,7 @@ public class TetherGun : MonoBehaviour
         {
             lineRenderer.enabled = true;
             lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(0, playerRigidbody.position);  // Changed from transform.position);
             lineRenderer.SetPosition(1, grapplePoint);
             return;
         }
