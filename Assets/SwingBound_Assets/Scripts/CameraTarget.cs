@@ -7,6 +7,8 @@ public class CameraTarget : MonoBehaviour
 
     void LateUpdate()
     {
+        if(!player)
+            return;
         // stays upright regardless of how the ball rolls, never copies rotation
         if (player)
             transform.position = player.position + new Vector3(0, heightOffset, 0);

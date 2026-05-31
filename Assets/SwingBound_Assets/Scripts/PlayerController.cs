@@ -5,9 +5,11 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
     public float jumpForce = 5;
+    public float dashForce = 20f;      
     public bool isDead;
     bool canDoubleJump;
     bool isGrounded;
+    bool canDash;
     
     Rigidbody rb;
     void Start()
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         isDead = false;
         canDoubleJump = true;
-
+        canDash = true;
     }
 
     void Update()
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     }
     if(!isDead){
         Jump();
+        Dash();
     }
     }    void FixedUpdate()
     {
@@ -72,7 +75,19 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(movement * speed);
         
     }
-    
+    void Dash()              
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isGrounded)
+    {
+        Vector3 cameraForward = Camera.main.transform.forward;
+        
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+        
+        rb.linearVelocity = cameraForward * dashForce;
+        canDash = false;
+    }
+    }
     void Jump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -97,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if(contact.normal.y > 0.5f)
         {
             isGrounded = true;
+            canDash = true; // Reset dash when grounded
         }
 
     }
