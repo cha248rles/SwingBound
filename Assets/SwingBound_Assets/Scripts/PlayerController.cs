@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     public float jumpForce = 5;
     public bool isDead;
+    bool canDoubleJump;
     bool isGrounded;
     
     Rigidbody rb;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
             Cursor.lockState = CursorLockMode.Locked;
         isDead = false;
+        canDoubleJump = true;
 
     }
 
@@ -77,6 +79,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            canDoubleJump = true;
+        }
+        // Second jump while in air
+        else if(Input.GetKeyDown(KeyCode.Space) && canDoubleJump && !isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            canDoubleJump = false;
         }
     }
 
