@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerControler : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
     public float jumpForce = 5;
@@ -42,7 +42,7 @@ public class PlayerControler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //Makes Sure that the player is grounded before they can jump again 
+        // makes sure that the player is grounded before they can jump again 
         ContactPoint contact = collision.contacts[0];
 
         if(contact.normal.y > 0.5f)
