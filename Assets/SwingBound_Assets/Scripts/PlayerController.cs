@@ -11,10 +11,23 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+            Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     void Update()
     {
+        // Lock mouse on click
+    if (Input.GetMouseButtonDown(0))
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    
+    // Unlock mouse on Escape
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
         Jump();
     }    void FixedUpdate()
     {
