@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public static bool IsPlaying {get; private set;}
     
+    [SerializeField] public bool isFinalLevel;
     [SerializeField] public string nextLevel;
     [SerializeField] public TMP_Text messageText;
     [SerializeField] public GameObject nextButton;
@@ -35,8 +36,17 @@ public class LevelManager : MonoBehaviour
     {
         IsPlaying = false;
         PlaySoundClip(winSFX);
-        DisplayGameMessage("YOU WIN!");
-        nextButton.SetActive(true);
+        
+        if (isFinalLevel)
+        {
+            DisplayGameMessage("GAME COMPLETE!");
+            restartButton.SetActive(true);
+        }
+        else
+        {
+            DisplayGameMessage("YOU WIN!");
+            nextButton.SetActive(true);
+        }
     }
 
     public void LevelLost()
@@ -79,9 +89,12 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevel()
     {
         Debug.Log("LoadNextLevel called!");
-        Debug.Log("nextLevel: " + nextLevel);
         
-        if (nextLevel != null && nextLevel.Length > 0)
+        if (isFinalLevel)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else if (nextLevel != null && nextLevel.Length > 0)
         {
             LoadSceneByName(nextLevel);
         }

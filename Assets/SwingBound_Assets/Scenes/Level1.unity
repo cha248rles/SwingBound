@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103381277}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.09470352, y: 0.00076217396, z: 0.00007250647, w: 0.9955053}
+  m_LocalRotation: {x: -0.0947035, y: 0.00093269977, z: 0.00008872877, w: 0.99550515}
   m_LocalPosition: {x: -9.9719, y: 11.257951, z: -15.99699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -954,7 +954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.09470352, y: 0.00076217396, z: 0.00007250645, w: 0.9955053}
+  m_LocalRotation: {x: -0.09470351, y: 0.0009326998, z: 0.00008872878, w: 0.9955051}
   m_LocalPosition: {x: -9.9719, y: 11.257951, z: -15.99699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1251,16 +1251,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3f1dee0117dac4ee5a98fe34d3eb182c, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 2117365305}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LoadNextLevel()
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &343296677
@@ -4011,6 +4011,7 @@ MonoBehaviour:
   maxRange: 500
   pullForce: 20
   maxSpeed: 15
+  tetherAttachSFX: {fileID: 8300000, guid: dcb602ddac1e34344a427affcaf9ace6, type: 3}
 --- !u!23 &1587160871
 MeshRenderer:
   m_ObjectHideFlags: 0
