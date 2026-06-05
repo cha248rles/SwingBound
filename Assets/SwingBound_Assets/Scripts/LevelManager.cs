@@ -1,48 +1,42 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class LevelManager : MonoBehaviour
 {
     public static bool IsPlaying {get; private set;}
-    [SerializeField] public bool isFinalLevel;
+    
     [SerializeField] public string nextLevel;
     [SerializeField] public TMP_Text messageText;
     [SerializeField] public GameObject nextButton;
     [SerializeField] public GameObject restartButton;
     [SerializeField] public AudioClip winSFX;
     [SerializeField] public AudioClip loseSFX;
+    
     private AudioSource audioSource;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     void Start()
     {
         IsPlaying = true;
-    } 
+    }
 
-    // Update is called once per frame
     void Update()
     {        
-        
     }
+
     public void LevelBeat()
     {
-       IsPlaying = false;
-        // play soundSFX
+        IsPlaying = false;
         PlaySoundClip(winSFX);
-        if(isFinalLevel)
-        {
-            DisplayGameMessage("GAME COMPLETE!");
-            restartButton.SetActive(true);
-        } else
-        {
-            DisplayGameMessage("YOU WIN!");
-            nextButton.SetActive(true);
-        }
+        DisplayGameMessage("YOU WIN!");
+        nextButton.SetActive(true);
     }
 
     public void LevelLost()
@@ -60,10 +54,6 @@ public class LevelManager : MonoBehaviour
             audioSource.clip = clip;
             audioSource.Play();
         }
-        else
-        {
-            Debug.LogWarning("AudioClip is null!");
-        }
     }
 
     private void DisplayGameMessage(string message)
@@ -77,31 +67,27 @@ public class LevelManager : MonoBehaviour
 
     public void LoadSceneByName(string name)
     {
+        Debug.Log("Loading scene: " + name);
         SceneManager.LoadScene(name);
     }
 
-    void LoadSceneByIndex(int index)
+    private void ReloadSameScene()
     {
-        SceneManager.LoadScene(index);
-    }
-
-    void ReloadSameScene()
-    {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadNextLevel()
     {
-        if(isFinalLevel)
+        Debug.Log("LoadNextLevel called!");
+        Debug.Log("nextLevel: " + nextLevel);
+        
+        if (nextLevel != null && nextLevel.Length > 0)
         {
-            SceneManager.LoadScene("Level1");
+            LoadSceneByName(nextLevel);
         }
-        else if(nextLevel.Length > 0)
+        else
         {
-           LoadSceneByName(nextLevel); 
-        }
-        else {
-            Debug.LogWarning("No nextLevel is specified in the inspector.");
+            Debug.LogError("No nextLevel specified in Inspector!");
         }
     }
 }
