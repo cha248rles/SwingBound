@@ -22,15 +22,24 @@ public class LevelManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+    
 
     void Start()
     {
         IsPlaying = true;
     }
 
-    void Update()
-    {        
+void Update()
+{
+    if (!IsPlaying && Input.GetMouseButtonDown(0))
+    {
+        RectTransform rect = restartButton.GetComponent<RectTransform>();
+        if (RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition))
+        {
+            ReloadSameScene();
+        }
     }
+}
 
     public void LevelBeat()
     {
@@ -53,8 +62,8 @@ public class LevelManager : MonoBehaviour
     {
         IsPlaying = false;
         PlaySoundClip(loseSFX);
-        DisplayGameMessage("GAME OVER!");
-        Invoke("ReloadSameScene", 2);
+        DisplayGameMessage("DEAD!");
+        restartButton.SetActive(true);
     }
 
     private void PlaySoundClip(AudioClip clip)
