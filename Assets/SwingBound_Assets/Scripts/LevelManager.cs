@@ -31,14 +31,18 @@ public class LevelManager : MonoBehaviour
 
 void Update()
 {
-    if (!IsPlaying && Input.GetMouseButtonDown(0))
-    {
-        RectTransform rect = restartButton.GetComponent<RectTransform>();
-        if (RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition))
-        {
-            ReloadSameScene();
-        }
-    }
+    if (IsPlaying || !Input.GetMouseButtonDown(0))
+        return;
+    if (restartButton != null && restartButton.activeSelf && ClickedOn(restartButton))
+        ReloadSameScene();
+    else if (nextButton != null && nextButton.activeSelf && ClickedOn(nextButton))
+        LoadNextLevel();
+}
+
+private bool ClickedOn(GameObject button)
+{
+    RectTransform rect = button.GetComponent<RectTransform>();
+    return RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition);
 }
 
     public void LevelBeat()

@@ -9,8 +9,10 @@ public class TetherGun : MonoBehaviour
     
     [Header("Tether Settings")]
     public float maxRange = 100f;
-    public float pullForce = 20f;     
+    public float pullForce = 20f;
     public float maxSpeed = 15f;
+    [Tooltip("Aim-assist radius. Larger = easier to latch onto platforms without aiming dead-center.")]
+    public float aimAssistRadius = 2f;
     
     [Header("Audio")]
     public AudioClip tetherAttachSFX;
@@ -61,32 +63,35 @@ public class TetherGun : MonoBehaviour
     void TryGrapple()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
-        RaycastHit hitInfo;
         Debug.DrawRay(ray.origin, ray.direction * maxRange, Color.red, 1f);
-        
+
         int layerMask = ~LayerMask.GetMask("Player");
-        
-        if (Physics.Raycast(ray, out hitInfo, maxRange, layerMask))
+
+        if (TryGetGrappleHit(ray, layerMask, out RaycastHit hitInfo))
         {
-            Debug.Log("Raycast hit: " + hitInfo.collider.name + " tag: " + hitInfo.collider.tag);
-            
-            if (!hitInfo.collider.CompareTag("GrapplePoint"))
-            {
-                Debug.Log("Not a GrapplePoint, ignoring.");
-                return;
-            }
-            
             grapplePoint = hitInfo.point;
             isHolding = true;
-            Debug.Log("Tether attached to: " + grapplePoint);
-            
+            Debug.Log("Tether attached to: " + hitInfo.collider.name);
+
             // Play tether attach sound
             PlaySound(tetherAttachSFX);
         }
-        else
-        {
-            Debug.Log("Raycast hit nothing.");
-        }
+    }
+
+    // Precise center hit first, then a forgiving fat cast so off-center aim still
+    // latches onto a platform. The fat cast still can't reach through walls,
+    // since SphereCast stops at the first collider it touches.
+    bool TryGetGrappleHit(Ray ray, int layerMask, out RaycastHit hitInfo)
+    {
+        if (Physics.Raycast(ray, out hitInfo, maxRange, layerMask)
+            && hitInfo.collider.CompareTag("GrapplePoint"))
+            return true;
+
+        if (Physics.SphereCast(ray, aimAssistRadius, out hitInfo, maxRange, layerMask)
+            && hitInfo.collider.CompareTag("GrapplePoint"))
+            return true;
+
+        return false;
     }
 
     void PullPlayer()
