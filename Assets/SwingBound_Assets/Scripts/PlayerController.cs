@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
     public float jumpForce = 5;
-    public float dashForce = 20f;  
+    public float dashForce = 20f;
+    public float brakeMultiplier = 3f;  // extra force when pushing against momentum
 
     [Header("Audio")]
     public AudioClip jumpSFX;
@@ -94,8 +95,11 @@ public class PlayerController : MonoBehaviour
 
         // Build movement relative to camera
         Vector3 movement = (cameraForward * vertical + cameraRight * horizontal).normalized;
-            rb.AddForce(movement * speed);
-        
+
+        // Extra stopping power when pushing against current momentum, so stops feel crisp
+        float brake = (Vector3.Dot(movement, rb.linearVelocity) < 0) ? brakeMultiplier : 1f;
+        rb.AddForce(movement * speed * brake);
+
     }
     void Dash()              
     {
