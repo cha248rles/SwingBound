@@ -1,9 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     private LevelManager levelManager;
     public int maxHealth = 2;
+    public float invincibilityDuration = 1.5f;
+    public AudioClip damageSfx;
+    
+    private bool isInvincible = false;
     void Start()
     {
         if (levelManager == null)
@@ -12,21 +17,28 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (isInvincible)
+            return;
+
         maxHealth--;
+        if (damageSfx != null)
+            AudioSource.PlayClipAtPoint(damageSfx, transform.position, 1f);
         if (maxHealth <= 0)
             Die();
-        
+        else
+            StartCoroutine(BecomeInvincible());
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-     //   if (collision.gameObject.CompareTag("Spike"))
-    //        TakeDamage();
-    //}
-
-    void OnTriggerEnter(Collider other)
+    private IEnumerator BecomeInvincible()
     {
-        if (other.CompareTag("Spike"))
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Spike"))
             TakeDamage();
     }
 
