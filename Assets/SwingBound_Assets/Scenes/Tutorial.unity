@@ -2904,10 +2904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1dee0117dac4ee5a98fe34d3eb182c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  isFinalLevel: 1
-  nextLevel: Tutorial
-  messageText: {fileID: 2000835465}
-  nextButton: {fileID: 0}
+  isFinalLevel: 0
+  nextLevel: Level1
+  messageText: {fileID: 685961154}
+  nextButton: {fileID: 1893375065}
   restartButton: {fileID: 976993703}
   winSFX: {fileID: 8300000, guid: 00995ae4d19c04d6ab11999c90bdef87, type: 3}
   loseSFX: {fileID: 8300000, guid: d04eb1236477448da892c29b9b9a33e7, type: 3}
