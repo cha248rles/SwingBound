@@ -33,8 +33,8 @@ public class TetherGun : MonoBehaviour
 
     void Update()
     {
-        // Only handle input if game is playing
-        if (LevelManager.IsPlaying)
+        // Only handle input if game is playing and not paused
+        if (LevelManager.IsPlaying && !PauseMenuBehavior.IsPaused)
         {
             HandleInput();
         }

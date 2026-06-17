@@ -52,16 +52,14 @@ public class PlayerController : MonoBehaviour
                 PlayerDied();
             }
 
+            // Don't touch the cursor or read input while paused (lets menu buttons be clicked)
+            if (PauseMenuBehavior.IsPaused)
+                return;
+
             // Lock mouse on click
             if (Input.GetMouseButtonDown(0))
             {
                 Cursor.lockState = CursorLockMode.Locked;
-            }
-
-            // Unlock mouse on Escape
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Cursor.lockState = CursorLockMode.Confined;
             }
 
             // Only allow controls if game is still playing
