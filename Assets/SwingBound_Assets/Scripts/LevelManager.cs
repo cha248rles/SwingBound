@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class LevelManager : MonoBehaviour
 {
     public static bool IsPlaying {get; private set;}
-    public static int score {get; private set;}
+    public static int Score {get; private set;}
     
     [SerializeField] public bool isFinalLevel;
     [SerializeField] public string nextLevel;
@@ -30,36 +30,41 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         IsPlaying = true;
-        score = 0;
+        Score = 0;
         UpdateScoreDisplay();
     }
 
-void Update()
-{
-    if (IsPlaying || !Input.GetMouseButtonDown(0))
-        return;
-    if (restartButton != null && restartButton.activeSelf && ClickedOn(restartButton))
-        ReloadSameScene();
-    else if (nextButton != null && nextButton.activeSelf && ClickedOn(nextButton))
-        LoadNextLevel();
-}
+    void Update()
+    {
+        if (IsPlaying || !Input.GetMouseButtonDown(0))
+            return;
+        if (restartButton != null && restartButton.activeSelf && ClickedOn(restartButton))
+            ReloadSameScene();
+        else if (nextButton != null && nextButton.activeSelf && ClickedOn(nextButton))
+            LoadNextLevel();
+    }
 
-private bool ClickedOn(GameObject button)
-{
-    RectTransform rect = button.GetComponent<RectTransform>();
-    return RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition);
-}
+    private bool ClickedOn(GameObject button)
+    {
+        RectTransform rect = button.GetComponent<RectTransform>();
+        return RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition);
+    }
+
+    public static void ResetScore()
+    {
+        Score = 0;
+    }
 
     public static void AddScore(int points)
     {
-        score += points;
+        Score += points;
         FindObjectOfType<LevelManager>().UpdateScoreDisplay();
     }
 
     private void UpdateScoreDisplay()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + Score;
     }
 
     public void LevelBeat()

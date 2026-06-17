@@ -1,33 +1,53 @@
 using UnityEngine;
 
-public class LootBehavior : MonoBehaviour
-{
-    public int scoreAmount = 10;
-    public AudioClip lootSFX;
-
+public class LootBehavior : MonoBehaviour {
+    public int scoreValue = 1;
+    public AudioClip pickupSFX;
+    
+    public static int pickupCount = 0;
+    LevelManager levelManager;
+    
     void Start()
     {
+        pickupCount++;
+        Debug.Log("Pickup count from " + transform.name + " " + pickupCount);
+        levelManager = FindAnyObjectByType<LevelManager>();
+        Debug.Log("Found LM: " + levelManager.name);
     }
-
+    
     void Update()
     {
-        transform.Rotate(Vector3.up, 90 * Time.deltaTime);
-        if(transform.position.y < Random.Range(1.0f, 3.0f)) 
+
+    }
+    
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.CompareTag("Player"))
         {
-            Destroy(gameObject.GetComponent<Rigidbody>()); 
+            DestroyPickup();
         }
     }
-
-    void OnTriggerEnter(Collider other)
+    
+    void DestroyPickup()
+{
+    LevelManager.AddScore(scoreValue);
+    Debug.Log("Pickup collected! Score: " + LevelManager.Score);
+    
+    PlayAudioEffect();
+    
+    // Removed animator code
+    pickupCount--;
+    Destroy(gameObject);
+    }
+    
+    void PlayAudioEffect()
     {
-        if(other.CompareTag("Player"))
-        {
-            LevelManager.AddScore(scoreAmount);
-            
-            if(lootSFX != null)
-                AudioSource.PlayClipAtPoint(lootSFX, transform.position);
-            
-            Destroy(gameObject);
-        }
+        AudioSource.PlayClipAtPoint(pickupSFX, Camera.main.transform.position);
+    }
+    
+    public static void ResetPickups()
+    {
+        pickupCount = 0;
+        LevelManager.ResetScore();  // Reset via LevelManager
     }
 }
