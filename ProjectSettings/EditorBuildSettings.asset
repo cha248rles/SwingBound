@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SwingBound_Assets/Scenes/Level1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/SwingBound_Assets/Scenes/MainMenu.unity
     guid: 30d3eb3243f108d48b6bade3633f4980
   - enabled: 1
-    path: Assets/SwingBound_Assets/Scenes/Level2.unity
-    guid: 561f7226d7452477c86ea78b52adf65d
-  - enabled: 1
     path: Assets/SwingBound_Assets/Scenes/Tutorial.unity
     guid: fda3f221df5ad4b01ace187ee3660d71
+  - enabled: 1
+    path: Assets/SwingBound_Assets/Scenes/Level1.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/SwingBound_Assets/Scenes/Level2.unity
+    guid: 561f7226d7452477c86ea78b52adf65d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
