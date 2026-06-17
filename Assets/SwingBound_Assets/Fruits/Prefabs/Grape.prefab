@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8619517467792587576}
   - component: {fileID: 2029802632658770953}
   m_Layer: 0
-  m_Name: SM_Fruits_Grape_P2
+  m_Name: Grape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

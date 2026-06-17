@@ -2,15 +2,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SocialPlatforms.Impl;
 
 [RequireComponent(typeof(AudioSource))]
 public class LevelManager : MonoBehaviour
 {
     public static bool IsPlaying {get; private set;}
+    public static int score {get; private set;}
     
     [SerializeField] public bool isFinalLevel;
     [SerializeField] public string nextLevel;
     [SerializeField] public TMP_Text messageText;
+    [SerializeField] public TMP_Text scoreText;
     [SerializeField] public GameObject nextButton;
     [SerializeField] public GameObject restartButton;
     [SerializeField] public AudioClip winSFX;
@@ -27,6 +30,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         IsPlaying = true;
+        score = 0;
+        UpdateScoreDisplay();
     }
 
 void Update()
@@ -44,6 +49,18 @@ private bool ClickedOn(GameObject button)
     RectTransform rect = button.GetComponent<RectTransform>();
     return RectTransformUtility.RectangleContainsScreenPoint(rect, Input.mousePosition);
 }
+
+    public static void AddScore(int points)
+    {
+        score += points;
+        FindObjectOfType<LevelManager>().UpdateScoreDisplay();
+    }
+
+    private void UpdateScoreDisplay()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score;
+    }
 
     public void LevelBeat()
     {
