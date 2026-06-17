@@ -1,18 +1,25 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     private LevelManager levelManager;
     public int maxHealth = 2;
+    public int currentHealth;
+    public Slider healthSlider;
     public float invincibilityDuration = 1.5f;
-    public AudioClip damageSfx;
-    
+    public AudioClip damageSFX;
     private bool isInvincible = false;
     void Start()
     {
         if (levelManager == null)
+        {
             levelManager = FindAnyObjectByType<LevelManager>();
+        }
+
+        currentHealth = maxHealth;
+        UpdateHealthSlider();
     }
 
     public void TakeDamage()
@@ -20,13 +27,25 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible)
             return;
 
-        maxHealth--;
-        if (damageSfx != null)
-            AudioSource.PlayClipAtPoint(damageSfx, transform.position, 1f);
-        if (maxHealth <= 0)
+        currentHealth--;
+        UpdateHealthSlider();
+
+        if (damageSFX != null)
+            AudioSource.PlayClipAtPoint(damageSFX, transform.position, 1f);
+
+        if (currentHealth <= 0)
             Die();
         else
             StartCoroutine(BecomeInvincible());
+    }
+
+    private void UpdateHealthSlider()
+    {
+        if(healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
     }
 
     private IEnumerator BecomeInvincible()
@@ -46,7 +65,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (levelManager != null)
             levelManager.LevelLost();
-
         Destroy(gameObject);
     }
 }
