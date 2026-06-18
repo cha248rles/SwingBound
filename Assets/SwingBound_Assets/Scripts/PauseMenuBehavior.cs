@@ -14,7 +14,7 @@ public class PauseMenuBehavior : MonoBehaviour
     void Start()
     {
         // Make sure the pause menu is hidden when the scene starts
-        pauseMenuPanel.SetActive(false);
+        //pauseMenuPanel.SetActive(false);
     }
 
     void Update()
@@ -23,7 +23,7 @@ public class PauseMenuBehavior : MonoBehaviour
         // so Input.GetKeyDown(Escape) is usually swallowed during gameplay.
         // Detect the resulting pointer-lock release and treat it as "pause".
         bool cursorLocked = Cursor.lockState == CursorLockMode.Locked;
-        if (!isGamePaused && wasCursorLocked && !cursorLocked)
+        if (!isGamePaused && wasCursorLocked && !cursorLocked && LevelManager.IsPlaying)
         {
             PauseGame();
         }
