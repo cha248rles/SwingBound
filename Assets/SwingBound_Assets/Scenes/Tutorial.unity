@@ -6197,6 +6197,47 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 7668342349187767317, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316899202008792667, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863542045921160953, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863542045921160953, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863542045921160953, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863542045921160953, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217775056543025730, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_text
+      value: "press space to jump\npress space twice to double jump\npress shift
+        in air to air dash \nuse mouse click to swing"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217775056543025730, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_fontSize
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217775056543025730, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217775056543025730, guid: 045ce66f1a3cab44fb729736f8d33b8f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6210,6 +6251,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1333391726}
     m_Modifications:
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 650728205295937426, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6290,9 +6347,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621532953889774265, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
       propertyPath: m_Name
       value: PauseMenuHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

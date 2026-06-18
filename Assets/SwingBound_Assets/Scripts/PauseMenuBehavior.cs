@@ -7,6 +7,10 @@ public class PauseMenuBehavior : MonoBehaviour
     public static bool IsPaused { get; private set; }
     bool isGamePaused = false;
 
+    // Tracks whether the cursor was pointer-locked last frame so we can detect
+    // when the browser releases the lock (the WebGL Escape-key behaviour).
+    bool wasCursorLocked = false;
+
     void Start()
     {
         // Make sure the pause menu is hidden when the scene starts
@@ -15,6 +19,16 @@ public class PauseMenuBehavior : MonoBehaviour
 
     void Update()
     {
+        // In WebGL the browser intercepts the Escape key to exit pointer lock,
+        // so Input.GetKeyDown(Escape) is usually swallowed during gameplay.
+        // Detect the resulting pointer-lock release and treat it as "pause".
+        bool cursorLocked = Cursor.lockState == CursorLockMode.Locked;
+        if (!isGamePaused && wasCursorLocked && !cursorLocked)
+        {
+            PauseGame();
+        }
+        wasCursorLocked = cursorLocked;
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(isGamePaused)
@@ -26,7 +40,7 @@ public class PauseMenuBehavior : MonoBehaviour
             {
                 // pause the game
                 PauseGame();
-            } 
+            }
         }
     }
 
