@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328c91f394c14e444b034f47be50232c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  reticleImage: {fileID: 0}
+  reticleImage: {fileID: 1330887168}
   targetColor: {r: 0, g: 0.89030087, b: 1, a: 1}
   animationSpeed: 5
   detectRange: 20
