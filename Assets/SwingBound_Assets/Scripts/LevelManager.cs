@@ -90,6 +90,10 @@ public class LevelManager : MonoBehaviour
         PlaySoundClip(loseSFX);
         DisplayGameMessage("DEAD!");
         restartButton.SetActive(true);
+
+        // Free and show the cursor so the player can click the restart button
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void PlaySoundClip(AudioClip clip)

@@ -6251,6 +6251,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1333391726}
     m_Modifications:
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 745.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 332662015142219538, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -106.666664
+      objectReference: {fileID: 0}
     - target: {fileID: 650728205295937426, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6331,9 +6347,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 745.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141423839373071498, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -365
+      objectReference: {fileID: 0}
     - target: {fileID: 1621532953889774265, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
       propertyPath: m_Name
       value: PauseMenuHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167205502450974923, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 745.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158367666568118491, guid: 02b2e2b0765da4430a5c202f69c73e24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -608.3333
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
